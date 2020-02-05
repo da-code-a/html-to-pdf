@@ -4,7 +4,7 @@ RUN apt install -y chromium-browser python3 python3-pip wget unzip
 RUN mkdir -p /builds/pdf_app/
 COPY . /builds/pdf_app/
 WORKDIR /builds/pdf_app/
-RUN wget https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip -o driver.zip
+RUN wget https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip -O driver.zip
 RUN unzip driver.zip
 ENV PATH /builds/pdf_app:$PATH
 RUN pip3 install --upgrade pip setuptools
