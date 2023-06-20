@@ -17,4 +17,11 @@ docker run \
 html2pdf
 ```
 
-Then simply POST raw HTML to `http://<your_host>:<your_port>/pdf` and save the returned PDF data.
+Then simply POST raw HTML to `http://localhost:8080/pdf` and save the returned PDF data:
+
+```bash
+curl \
+-X POST \
+-d "<html><p>Your HTML here.</p></html>" \
+http://localhost:8080/pdf
+```
