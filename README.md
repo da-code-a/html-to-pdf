@@ -9,11 +9,12 @@ Usage
 Usage is simple:
 
 ```bash
+docker build . -t html2pdf
 docker run \
--p <YOUR_DESIRED_PORT>:8080 \
+-p 8080:8080 \
 -d \
 --restart=always \
-donaldkbrown214/html-to-pdf
+html2pdf
 ```
 
 Then simply POST raw HTML to `http://<your_host>:<your_port>/pdf` and save the returned PDF data.

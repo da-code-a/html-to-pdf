@@ -1,13 +1,11 @@
-FROM ubuntu
-RUN apt update
-RUN apt install -y chromium-browser python3 python3-pip wget unzip
+FROM selenium/standalone-chrome
+USER root
+RUN apt-get update && apt-get install python3-distutils -y
+RUN wget https://bootstrap.pypa.io/get-pip.py
+RUN python3 get-pip.py
 RUN mkdir -p /builds/pdf_app/
 COPY . /builds/pdf_app/
 WORKDIR /builds/pdf_app/
-RUN wget https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip -O driver.zip
-RUN unzip driver.zip
-ENV PATH /builds/pdf_app:$PATH
-RUN pip3 install --upgrade pip setuptools
-RUN pip3 install -r requirements.txt
+RUN python3 -m pip install -r requirements.txt
 EXPOSE 8080
 CMD python3 app.py
